@@ -1,15 +1,20 @@
 using Godot;
 using System;
 
-public partial class Globals : Node
+namespace Game.Core
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public partial class Globals : Node
 	{
-	}
+		public static Globals Instance { get; private set; }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+		[ExportCategory("Gameplay")]
+		[Export] public int GRID_SIZE = 16;
+
+		public override void _Ready()
+		{
+			Instance = this;
+
+			Logger.Info("Loading Globals ...");
+		}
 	}
 }
